@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hala Sportowa w Kluczach | Zawierciańska 30</title>
+    <meta name="description" content="Hala Sportowa w Kluczach – koszykówka, siatkówka, akrobatyka, Krav Maga, pilates, siłownia i sala fitness. ul. Zawierciańska 30, Klucze.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏟️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================
+           RESET & VARIABLES
+        ============================================================ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold:      #d4af37;
+            --gold-dark: #b8941e;
+            --gold-lite: #e8c84a;
+            --dark:   #080808;
+            --dark-2: #101010;
+            --dark-3: #181818;
+            --dark-4: #222222;
+            --dark-5: #2c2c2c;
+            --text:   #dcdcdc;
+            --muted:  #888;
+            --r: 10px;
+            --tr: .3s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { background: var(--dark); color: var(--text); font-family: 'Open Sans', sans-serif; line-height: 1.6; overflow-x: hidden; }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* ============================================================
+           UTILS
+        ============================================================ */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .gold { color: var(--gold); }
+        .section { padding: 90px 0; }
+        .bg-dark2 { background: var(--dark-2); }
+        .bg-dark3 { background: var(--dark-3); }
+
+        .sec-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .sec-sub {
+            text-align: center;
+            color: var(--muted);
+            font-size: .95rem;
+            font-weight: 300;
+            margin-bottom: 50px;
+        }
+        .sec-line { width: 55px; height: 3px; background: var(--gold); margin: 0 auto 50px; }
+
+        .btn-gold {
+            display: inline-block;
+            background: var(--gold);
+            color: #000;
+            padding: 13px 32px;
+            font-family: 'Oswald', sans-serif;
+            font-size: .88rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: background var(--tr), transform var(--tr);
+        }
+        .btn-gold:hover { background: var(--gold-lite); transform: translateY(-2px); }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: #fff;
+            padding: 13px 32px;
+            font-family: 'Oswald', sans-serif;
+            font-size: .88rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            border: 2px solid rgba(255,255,255,.45);
+            transition: border-color var(--tr), color var(--tr), transform var(--tr);
+        }
+        .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+        /* ============================================================
+           NAVBAR
+        ============================================================ */
+        #nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: transparent;
+            transition: background var(--tr), box-shadow var(--tr);
+        }
+        #nav.scrolled {
+            background: rgba(8,8,8,.97);
+            box-shadow: 0 2px 20px rgba(0,0,0,.6);
+        }
+        .nav-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 68px;
+        }
+        .nav-brand {
+            display: flex; align-items: center; gap: 11px;
+        }
+        .nav-brand img {
+            height: 42px; width: auto; object-fit: contain; border-radius: 4px;
+        }
+        .nav-brand-txt { font-family: 'Oswald', sans-serif; line-height: 1.2; }
+        .nav-brand-txt .t { display: block; font-size: .95rem; font-weight: 600; color: #fff; }
+        .nav-brand-txt .b { display: block; font-size: .7rem; letter-spacing: 2.5px; color: var(--gold); }
+
+        .nav-links {
+            display: flex; align-items: center; gap: 28px;
+        }
+        .nav-links a {
+            font-family: 'Oswald', sans-serif;
+            font-size: .82rem; letter-spacing: 1.5px; text-transform: uppercase;
+            color: rgba(255,255,255,.8);
+            transition: color var(--tr);
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: var(--gold);
+            transition: width .3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.nav-active { color: var(--gold); }
+        .nav-links a.nav-active::after { width: 100%; }
+        .nav-links .cta {
+            background: var(--gold); color: #000 !important;
+            padding: 8px 20px; border-radius: 4px; font-weight: 700;
+        }
+        .nav-links .cta:hover { background: var(--gold-lite); }
+
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            background: none; border: none; cursor: pointer; padding: 4px;
+        }
+        .hamburger span {
+            display: block; width: 25px; height: 2px;
+            background: #fff; border-radius: 2px; transition: var(--tr);
+        }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .mob-menu {
+            display: none; position: fixed;
+            top: 68px; left: 0; right: 0;
+            background: rgba(8,8,8,.99);
+            border-top: 1px solid var(--dark-5);
+            padding: 10px 20px 20px;
+            z-index: 999;
+        }
+        .mob-menu.open { display: block; }
+        .mob-menu a {
+            display: block; padding: 13px 0;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.05rem; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--text); border-bottom: 1px solid var(--dark-5);
+            transition: color var(--tr);
+        }
+        .mob-menu a:last-child { border: none; }
+        .mob-menu a:hover { color: var(--gold); }
+
+        /* ============================================================
+           HERO
+        ============================================================ */
+        #hero {
+            position: relative; height: 100vh; min-height: 620px;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: url('images/hala-sportowa.jpg') center top / cover no-repeat;
+            filter: brightness(.38);
+        }
+        .hero-fade {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom,
+                rgba(8,8,8,.1) 0%,
+                rgba(8,8,8,.35) 55%,
+                rgba(8,8,8,.97) 100%);
+        }
+        .hero-content {
+            position: relative; z-index: 2; padding: 20px;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .hero-logo {
+            height: 130px; width: auto; object-fit: contain;
+            margin-bottom: 28px;
+            filter: drop-shadow(0 6px 24px rgba(0,0,0,.9));
+            border-radius: 8px;
+        }
+        .hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(3rem, 9vw, 6.5rem);
+            font-weight: 700; text-transform: uppercase;
+            letter-spacing: 4px; line-height: 1.05; color: #fff;
+            text-shadow: 0 4px 30px rgba(0,0,0,.9);
+            margin-bottom: 14px;
+        }
+        .hero-title .hl { color: var(--gold); }
+        .hero-tagline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem; letter-spacing: 7px; text-transform: uppercase;
+            color: rgba(255,255,255,.5); margin-bottom: 40px;
+        }
+        .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+
+        .hero-arrow {
+            position: absolute; bottom: 30px; left: 50%;
+            transform: translateX(-50%);
+            z-index: 2; color: rgba(255,255,255,.3);
+            animation: arrowbounce 2s infinite;
+        }
+        @keyframes arrowbounce {
+            0%,100% { transform: translateX(-50%) translateY(0); }
+            50%      { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ============================================================
+           STATS BAR (unused - removed)
+        ============================================================ */
+
+        /* ============================================================
+           SPORT CARDS
+        ============================================================ */
+        .sports-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        @media(max-width:1024px){
+            .sports-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .sport-card {
+            background: var(--dark-3);
+            border-radius: var(--r);
+            overflow: hidden;
+            display: flex; flex-direction: column;
+            transition: transform var(--tr), box-shadow var(--tr);
+        }
+        .sport-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 22px 44px rgba(0,0,0,.6);
+        }
+        .sport-bar { height: 5px; }
+        .sport-body { padding: 26px 22px; flex: 1; }
+        .sport-ico { font-size: 2.6rem; margin-bottom: 14px; }
+        .sport-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.45rem; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase;
+            color: #fff; margin-bottom: 5px;
+        }
+        .sport-club { font-size: .78rem; color: var(--muted); font-weight: 300; line-height: 1.45; margin-bottom: 18px; }
+        .sport-sep { height: 1px; background: var(--dark-5); margin-bottom: 18px; }
+
+        .trainer-row {
+            display: flex; align-items: center;
+            justify-content: space-between; gap: 8px;
+            margin-bottom: 9px;
+        }
+        .trainer-row:last-child { margin-bottom: 0; }
+        .tr-name { font-size: .83rem; font-weight: 600; color: var(--text); }
+        .tr-phone {
+            font-size: .78rem; font-family: 'Oswald', sans-serif;
+            letter-spacing: .5px; color: var(--gold); white-space: nowrap;
+        }
+        .tr-phone:hover { color: var(--gold-lite); }
+
+        .sport-foot {
+            padding: 14px 22px;
+            border-top: 1px solid var(--dark-5);
+        }
+        .sport-foot a {
+            display: flex; align-items: center; gap: 6px;
+            font-family: 'Oswald', sans-serif;
+            font-size: .8rem; letter-spacing: 1.5px; text-transform: uppercase;
+            color: var(--muted); transition: color var(--tr);
+        }
+        .sport-foot a:hover { color: var(--gold); }
+
+        /* Siłownia card */
+        .card-gym { border: 1px solid rgba(212,175,55,.18); }
+        .card-gym:hover { border-color: var(--gold); }
+        .gym-link {
+            display: block; width: 100%; text-align: center;
+            background: var(--gold); color: #000;
+            padding: 11px 20px;
+            font-family: 'Oswald', sans-serif;
+            font-size: .85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+            border-radius: 4px; transition: background var(--tr);
+        }
+        .gym-link:hover { background: var(--gold-lite); }
+
+        /* ============================================================
+           AKTUALNOŚCI
+        ============================================================ */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .news-card {
+            background: var(--dark-3); border-radius: var(--r);
+            overflow: hidden; display: flex; flex-direction: column;
+            transition: transform var(--tr);
+        }
+        .news-card:hover { transform: translateY(-5px); }
+        .news-img {
+            height: 175px; background: var(--dark-4);
+            position: relative; display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        .news-img svg { opacity: .15; }
+        .news-date {
+            position: absolute; top: 14px; left: 14px;
+            background: var(--gold); color: #000;
+            font-family: 'Oswald', sans-serif;
+            font-size: .75rem; font-weight: 700; letter-spacing: 1px;
+            padding: 4px 10px; border-radius: 3px;
+        }
+        .news-tag {
+            position: absolute; bottom: 14px; left: 14px;
+            font-size: .7rem; font-weight: 700; letter-spacing: 1.5px;
+            text-transform: uppercase; color: var(--muted);
+            background: rgba(0,0,0,.75); padding: 3px 8px; border-radius: 2px;
+        }
+        .news-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+        .news-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.08rem; font-weight: 600; color: #fff;
+            line-height: 1.35; margin-bottom: 10px;
+        }
+        .news-excerpt { font-size: .83rem; color: var(--muted); line-height: 1.65; flex: 1; margin-bottom: 16px; }
+        .news-more {
+            font-family: 'Oswald', sans-serif;
+            font-size: .78rem; letter-spacing: 1.5px; text-transform: uppercase;
+            color: var(--gold); transition: color var(--tr);
+        }
+        .news-more:hover { color: var(--gold-lite); }
+
+        /* ============================================================
+           SIŁOWNIA PROMO STRIP
+        ============================================================ */
+        .silownia-strip {
+            background: linear-gradient(135deg, #0e0e00 0%, #1a1400 50%, #0e0e00 100%);
+            border-top: 1px solid rgba(212,175,55,.25);
+            border-bottom: 1px solid rgba(212,175,55,.25);
+            padding: 48px 0;
+        }
+        .silownia-strip-inner {
+            display: flex; align-items: center;
+            justify-content: space-between; gap: 30px; flex-wrap: wrap;
+        }
+        .silownia-strip-left { flex: 1; min-width: 240px; }
+        .silownia-strip-tag {
+            display: inline-block;
+            font-size: .7rem; font-weight: 700; letter-spacing: 2.5px;
+            text-transform: uppercase; color: var(--gold);
+            background: rgba(212,175,55,.1);
+            border: 1px solid rgba(212,175,55,.25);
+            padding: 4px 12px; border-radius: 20px; margin-bottom: 12px;
+        }
+        .silownia-strip-left h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700; text-transform: uppercase;
+            letter-spacing: 2px; color: #fff; margin-bottom: 8px;
+        }
+        .silownia-strip-left p { font-size: .9rem; color: var(--muted); line-height: 1.6; }
+        .silownia-strip-btn {
+            display: inline-block; flex-shrink: 0;
+            background: var(--gold); color: #000;
+            padding: 15px 36px;
+            font-family: 'Oswald', sans-serif;
+            font-size: .9rem; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; border-radius: 4px;
+            transition: background var(--tr), transform var(--tr);
+            white-space: nowrap;
+        }
+        .silownia-strip-btn:hover { background: var(--gold-lite); transform: translateY(-2px); }
+        @media (max-width: 600px) {
+            .silownia-strip-inner { flex-direction: column; align-items: flex-start; }
+            .silownia-strip-btn { width: 100%; text-align: center; }
+        }
+
+        /* ============================================================
+           SCHEDULE PILLS & LIST
+        ============================================================ */
+        .sched-list {
+            margin-top: 14px; display: flex; flex-direction: column; gap: 5px;
+        }
+        .sched-row {
+            display: flex; align-items: baseline; gap: 8px;
+            font-size: .8rem;
+        }
+        .sched-day {
+            font-family: 'Oswald', sans-serif;
+            font-size: .72rem; letter-spacing: 1.5px; text-transform: uppercase;
+            color: var(--muted); min-width: 34px;
+        }
+        .sched-time {
+            font-family: 'Oswald', sans-serif;
+            font-size: .82rem; color: #fff;
+        }
+        .sched-place {
+            font-size: .72rem; color: var(--muted); margin-left: auto;
+        }
+        .sched-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: .68rem; letter-spacing: 1.5px; text-transform: uppercase;
+            color: var(--gold); margin-top: 10px; margin-bottom: 4px;
+        }
+        .sport-pill {
+            display: inline-block;
+            font-family: 'Oswald', sans-serif;
+            font-size: .72rem; font-weight: 600; letter-spacing: 1.5px;
+            text-transform: uppercase; padding: 3px 10px; border-radius: 20px;
+            white-space: nowrap;
+        }
+        .pill-siatka  { background: rgba(0,150,199,.18); color: #4dc8f0; border: 1px solid rgba(0,150,199,.3); }
+        .pill-akro    { background: rgba(155,93,229,.18); color: #c084fc; border: 1px solid rgba(155,93,229,.3); }
+        .pill-pilka   { background: rgba(45,159,100,.18); color: #4ade80; border: 1px solid rgba(45,159,100,.3); }
+        .pill-kosza   { background: rgba(232,93,4,.18);   color: #fb923c; border: 1px solid rgba(232,93,4,.3); }
+        .pill-gymkor  { background: rgba(236,72,153,.18); color: #f472b6; border: 1px solid rgba(236,72,153,.3); }
+        .pill-gymdziec { background: rgba(250,204,21,.18); color: #fde047; border: 1px solid rgba(250,204,21,.3); }
+        .pill-pilates { background: rgba(212,175,55,.18); color: var(--gold); border: 1px solid rgba(212,175,55,.3); }
+        .pill-kravmaga { background: rgba(220,38,38,.18); color: #f87171; border: 1px solid rgba(220,38,38,.3); }
+        .pill-reczna  { background: rgba(16,185,129,.18); color: #34d399; border: 1px solid rgba(16,185,129,.3); }
+        .t-time { font-family: 'Oswald', sans-serif; font-size: .92rem; color: #fff; white-space: nowrap; }
+        .t-place { font-size: .78rem; color: var(--muted); }
+
+        /* ============================================================
+           WYNAJEM
+        ============================================================ */
+        .wynajem-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 20px;
+        }
+        .wynajem-card {
+            background: var(--dark-3); border-radius: var(--r);
+            padding: 28px 24px;
+            border: 1px solid var(--dark-5);
+            transition: transform var(--tr), border-color var(--tr);
+        }
+        .wynajem-card:hover { transform: translateY(-5px); border-color: rgba(212,175,55,.3); }
+        .wynajem-ico { font-size: 2rem; margin-bottom: 14px; }
+        .wynajem-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.05rem; font-weight: 600; letter-spacing: 1.5px;
+            text-transform: uppercase; color: #fff; margin-bottom: 8px;
+        }
+        .wynajem-desc { font-size: .83rem; color: var(--muted); line-height: 1.65; margin-bottom: 18px; }
+        .wynajem-cta {
+            font-family: 'Oswald', sans-serif;
+            font-size: .78rem; letter-spacing: 1.5px; text-transform: uppercase;
+            color: var(--gold); display: flex; align-items: center; gap: 6px;
+            transition: color var(--tr);
+        }
+        .wynajem-cta:hover { color: var(--gold-lite); }
+        .wynajem-note {
+            margin-top: 38px; padding: 22px 26px;
+            background: var(--dark-3); border-radius: var(--r);
+            border-left: 3px solid var(--gold);
+            font-size: .88rem; color: var(--muted); line-height: 1.7;
+        }
+        .wynajem-note strong { color: #fff; }
+
+        /* ============================================================
+           KONTAKT
+        ============================================================ */
+        .kontakt-grid {
+            display: grid; grid-template-columns: 1fr 1.3fr;
+            gap: 44px; align-items: start;
+        }
+        .kontakt-head {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.35rem; font-weight: 600; letter-spacing: 2px;
+            text-transform: uppercase; color: #fff; margin-bottom: 28px;
+        }
+        .kontakt-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 22px; }
+        .k-ico {
+            width: 42px; height: 42px; flex-shrink: 0;
+            background: var(--dark-4); border: 1px solid var(--dark-5);
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+        }
+        .k-txt strong {
+            display: block; font-size: .7rem; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 4px;
+        }
+        .k-txt p { font-size: .93rem; color: var(--text); line-height: 1.5; }
+        .k-txt a { color: var(--text); transition: color var(--tr); }
+        .k-txt a:hover { color: var(--gold); }
+        .map-box { border-radius: var(--r); overflow: hidden; border: 1px solid var(--dark-5); }
+
+        /* ============================================================
+           FOOTER
+        ============================================================ */
+        footer { background: var(--dark-2); border-top: 1px solid var(--dark-5); padding: 60px 0 0; }
+        .footer-cols {
+            display: grid; grid-template-columns: 1.6fr 1fr 1fr;
+            gap: 40px; padding-bottom: 50px;
+        }
+        .footer-brand { display: flex; align-items: center; gap: 11px; margin-bottom: 16px; }
+        .footer-brand img { height: 38px; object-fit: contain; border-radius: 4px; }
+        .footer-brand-txt { font-family: 'Oswald', sans-serif; line-height: 1.2; }
+        .footer-brand-txt .ft { display: block; font-size: .9rem; font-weight: 600; color: #fff; }
+        .footer-brand-txt .fb { display: block; font-size: .67rem; letter-spacing: 2px; color: var(--gold); }
+        .footer-desc { font-size: .83rem; color: var(--muted); line-height: 1.75; }
+        .footer-col h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: .88rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+            color: #fff; margin-bottom: 18px; padding-bottom: 10px;
+            border-bottom: 1px solid var(--dark-5);
+        }
+        .footer-col ul li { margin-bottom: 9px; }
+        .footer-col ul a { font-size: .83rem; color: var(--muted); transition: color var(--tr); }
+        .footer-col ul a:hover { color: var(--gold); }
+        .fcon { display: flex; align-items: center; gap: 10px; margin-bottom: 11px; }
+        .fcon span:first-child { font-size: .95rem; }
+        .fcon span:last-child { font-size: .83rem; color: var(--muted); }
+        .fcon a { font-size: .83rem; color: var(--muted); transition: color var(--tr); }
+        .fcon a:hover { color: var(--gold); }
+        .footer-bar {
+            border-top: 1px solid var(--dark-5); padding: 18px 0;
+            text-align: center; font-size: .78rem; color: var(--muted);
+        }
+
+        /* ============================================================
+           FADE-IN
+        ============================================================ */
+        .fi { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+        .fi.show { opacity: 1; transform: none; }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media (max-width: 1000px) {
+            .footer-cols { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .hero-logo { height: 85px; }
+            .hero-title { font-size: clamp(2.2rem, 11vw, 3.8rem); letter-spacing: 2px; }
+            .hero-btns { flex-direction: column; align-items: stretch; text-align: center; }
+            .stats-row { grid-template-columns: repeat(2,1fr); }
+            .stat-cell:nth-child(2) { border-right: none; }
+            .sports-grid { grid-template-columns: 1fr; }
+            .news-grid { grid-template-columns: 1fr; }
+            .pricing-row { grid-template-columns: 1fr; max-width: 340px; }
+            .price-card.hot { transform: none; }
+            .price-card.hot:hover { transform: translateY(-5px); }
+            .kontakt-grid { grid-template-columns: 1fr; }
+            .footer-cols { grid-template-columns: 1fr; gap: 30px; }
+            .section { padding: 65px 0; }
+        }
+        @media (max-width: 480px) {
+            .hero-tagline { letter-spacing: 4px; font-size: .85rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========================================================
+     NAVBAR
+======================================================== -->
+<nav id="nav">
+    <div class="nav-inner">
+        <a href="#hero" class="nav-brand">
+            <img src="images/logo-hala.jpg" alt="Logo Hala Sportowa Klucze">
+            <div class="nav-brand-txt">
+                <span class="t">HALA SPORTOWA</span>
+                <span class="b">W KLUCZACH</span>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#dyscypliny">Zajęcia</a></li>
+            <li><a href="#aktualnosci">Aktualności</a></li>
+            <li><a href="#wynajem">Wynajem</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="silownia.html" class="cta">🏋️ SIŁOWNIA</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Otwórz menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="mob-menu" id="mobMenu">
+        <a href="#dyscypliny" class="mob-link">Zajęcia</a>
+        <a href="#aktualnosci" class="mob-link">Aktualności</a>
+        <a href="#wynajem" class="mob-link">Wynajem</a>
+        <a href="#kontakt" class="mob-link">Kontakt</a>
+        <a href="silownia.html">🏋️ Siłownia & Fitness</a>
+    </div>
+</nav>
+
+<!-- ========================================================
+     HERO
+======================================================== -->
+<section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-fade"></div>
+    <div class="hero-content">
+        <img src="images/logo-hala.jpg" class="hero-logo" alt="Hala Sportowa Klucze logo">
+        <h1 class="hero-title">
+            HALA SPORTOWA<br>
+            <span class="hl">W KLUCZACH</span>
+        </h1>
+        <p class="hero-tagline">Sport &nbsp;·&nbsp; Aktywność &nbsp;·&nbsp; Pasja</p>
+        <div class="hero-btns">
+            <a href="#dyscypliny" class="btn-gold">NASZE ZAJĘCIA</a>
+            <a href="silownia.html" class="btn-outline">SIŁOWNIA & FITNESS</a>
+        </div>
+    </div>
+    <div class="hero-arrow">
+        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <polyline points="6 9 12 15 18 9"/>
+        </svg>
+    </div>
+</section>
+
+<!-- ========================================================
+     ZAJĘCIA
+======================================================== -->
+<section id="dyscypliny" class="section bg-dark2">
+    <div class="container">
+        <h2 class="sec-title">NA<span class="gold">SZE ZAJĘCIA</span></h2>
+        <p class="sec-sub">Koszykówka, siatkówka, akrobatyka, Krav Maga, pilates i nie tylko – dla dzieci, młodzieży i dorosłych</p>
+        <div class="sec-line"></div>
+        <div class="sports-grid">
+
+            <!-- Koszykówka -->
+            <div class="sport-card fi">
+                <div class="sport-bar" style="background:#e85d04;"></div>
+                <div class="sport-body">
+                    <div class="sport-ico">🏀</div>
+                    <div class="sport-name">Koszykówka</div>
+                    <div class="sport-club">UKS Uczniowski Klub Sportowy<br>Kwaśniów Dolny</div>
+                    <div class="sport-sep"></div>
+                    <div class="trainer-row">
+                        <span class="tr-name">Trener Damian</span>
+                        <a href="tel:516598448" class="tr-phone">516 598 448</a>
+                    </div>
+                    <div class="sched-label">Harmonogram zajęć</div>
+                    <div class="sched-list">
+                        <div class="sched-row">
+                            <span class="sched-day">Pn</span>
+                            <span class="sched-time">21:00 – 21:30</span>
+                            <span class="sched-place">Płyta główna</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sport-foot">
+                    <a href="tel:516598448">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Zadzwoń do trenera
+                    </a>
+                </div>
+            </div>
+
+            <!-- Siatkówka -->
+            <div class="sport-card fi">
+                <div class="sport-bar" style="background:#0096c7;"></div>
+                <div class="sport-body">
+                    <div class="sport-ico">🏐</div>
+                    <div class="sport-name">Siatkówka</div>
+                    <div class="sport-club">Aluron CMC Warta Zawiercie</div>
+                    <div class="sport-sep"></div>
+                    <div class="trainer-row">
+                        <span class="tr-name">Trener Piotr</span>
+                        <a href="tel:880474274" class="tr-phone">880 474 274</a>
+                    </div>
+                    <div class="trainer-row">
+                        <span class="tr-name">Trener Tomek</span>
+                        <a href="tel:608263332" class="tr-phone">608 263 332</a>
+                    </div>
+                    <div class="sched-label">Harmonogram zajęć</div>
+                    <div class="sched-list">
+                        <div class="sched-row">
+                            <span class="sched-day">Pn</span>
+                            <span class="sched-time">17:00 – 20:00</span>
+                            <span class="sched-place">Płyta główna</span>
+                        </div>
+                        <div class="sched-row">
+                            <span class="sched-day">Wt</span>
+                            <span class="sched-time">17:00 – 20:00</span>
+                            <span class="sched-place">Płyta główna</span>
+                        </div>
+                        <div class="sched-row">
+                            <span class="sched-day">Czw</span>
+                            <span class="sched-time">17:00 – 20:00</span>
+                            <span class="sched-place">Płyta główna</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sport-foot">
+                    <a href="tel:880474274">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Zadzwoń do trenera
+                    </a>
+                </div>
+            </div>
+
+            <!-- Akrobatyka -->
+            <div class="sport-card fi">
+                <div class="sport-bar" style="background:#9b5de5;"></div>
+                <div class="sport-body">
+                    <div class="sport-ico">🤸</div>
+                    <div class="sport-name">Akrobatyka</div>
+                    <div class="sport-club">Akrobatyka Klucze</div>
+                    <div class="sport-sep"></div>
+                    <div class="trainer-row">
+                        <span class="tr-name">Trener Katarzyna</span>
+                        <a href="tel:603678094" class="tr-phone">603 678 094</a>
+                    </div>
+                    <div class="sched-label">Harmonogram zajęć</div>
+                    <div class="sched-list">
+                        <div class="sched-row">
+                            <span class="sched-day">Wt</span>
+                            <span class="sched-time">15:45 – 19:45</span>
+                            <span class="sched-place">Mała sala / Płyta</span>
+                        </div>
+                        <div class="sched-row">
+                            <span class="sched-day">Czw</span>
+                            <span class="sched-time">15:45 – 19:45</span>
+                            <span class="sched-place">Mała sala / Płyta</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sport-foot">
+                    <a href="tel:603678094">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Zadzwoń do trenera
+                    </a>
+                </div>
+            </div>
+
+            <!-- Piłka Ręczna -->
+            <div class="sport-card fi">
+                <div class="sport-bar" style="background:#10b981;"></div>
+                <div class="sport-body">
+                    <div class="sport-ico">🤾</div>
+                    <div class="sport-name">Piłka Ręczna</div>
+                    <div class="sport-club">Hala Sportowa w Kluczach</div>
+                    <div class="sport-sep"></div>
+                    <div class="sched-label">Harmonogram zajęć</div>
+                    <div class="sched-list">
+                        <div class="sched-row">
+                            <span class="sched-day">Pn</span>
+                            <span class="sched-time">16:00 – 17:00</span>
+                            <span class="sched-place">Płyta główna</span>
+                        </div>
+                        <div class="sched-row">
+                            <span class="sched-day">Śr</span>
+                            <span class="sched-time">15:30 – 16:30</span>
+                            <span class="sched-place">Płyta główna</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sport-foot">
+                    <a href="#kontakt">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        Zapytaj o zapisy
+                    </a>
+                </div>
+            </div>
+
+            <!-- Gimnastyka dla dzieci -->
+            <div class="sport-card fi">
+                <div class="sport-bar" style="background:#facc15;"></div>
+                <div class="sport-body">
+                    <div class="sport-ico">🌟</div>
+                    <div class="sport-name">Gimnastyka dla dzieci</div>
+                    <div class="sport-club">Hala Sportowa w Kluczach</div>
+                    <div class="sport-sep"></div>
+                    <div class="sched-label">Harmonogram zajęć</div>
+                    <div class="sched-list">
+                        <div class="sched-row">
+                            <span class="sched-day">Śr</span>
+                            <span class="sched-time">17:30 – 18:15</span>
+                            <span class="sched-place">Płyta · gr. I</span>
+                        </div>
+                        <div class="sched-row">
+                            <span class="sched-day">Śr</span>
+                            <span class="sched-time">18:30 – 19:15</span>
+                            <span class="sched-place">Płyta · gr. II</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sport-foot">
+                    <a href="#kontakt">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        Zapytaj o zapisy
+                    </a>
+                </div>
+            </div>
+
+            <!-- Gimnastyka Korekcyjna -->
+            <div class="sport-card fi">
+                <div class="sport-bar" style="background:#ec4899;"></div>
+                <div class="sport-body">
+                    <div class="sport-ico">🧘</div>
+                    <div class="sport-name">Gimnastyka korekcyjna</div>
+                    <div class="sport-club">Hala Sportowa w Kluczach</div>
+                    <div class="sport-sep"></div>
+                    <div class="sched-label">Harmonogram zajęć</div>
+                    <div class="sched-list">
+                        <div class="sched-row">
+                            <span class="sched-day">Wt</span>
+                            <span class="sched-time">18:00 – 19:00</span>
+                            <span class="sched-place">Sala fitness · dorośli</span>
+                        </div>
+                        <div class="sched-row">
+                            <span class="sched-day">Śr</span>
+                            <span class="sched-time">18:00 – 19:00</span>
+                            <span class="sched-place">Mała sala</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sport-foot">
+                    <a href="#kontakt">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        Zapytaj o zapisy
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pilates -->
+            <div class="sport-card fi">
+                <div class="sport-bar" style="background:var(--gold);"></div>
+                <div class="sport-body">
+                    <div class="sport-ico">🧎</div>
+                    <div class="sport-name">Pilates</div>
+                    <div class="sport-club">Hala Sportowa w Kluczach</div>
+                    <div class="sport-sep"></div>
+                    <div class="sched-label">Harmonogram zajęć</div>
+                    <div class="sched-list">
+                        <div class="sched-row">
+                            <span class="sched-day">Wt</span>
+                            <span class="sched-time">19:00 – 20:00</span>
+                            <span class="sched-place">Sala fitness</span>
+                        </div>
+                        <div class="sched-row">
+                            <span class="sched-day">Czw</span>
+                            <span class="sched-time">19:00 – 20:00</span>
+                            <span class="sched-place">Sala fitness</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sport-foot">
+                    <a href="#kontakt">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        Zapytaj o zapisy
+                    </a>
+                </div>
+            </div>
+
+            <!-- Krav Maga -->
+            <div class="sport-card fi">
+                <div class="sport-bar" style="background:#dc2626;"></div>
+                <div class="sport-body">
+                    <div class="sport-ico">🥋</div>
+                    <div class="sport-name">Krav Maga</div>
+                    <div class="sport-club">Hala Sportowa w Kluczach</div>
+                    <div class="sport-sep"></div>
+                    <div class="sched-label">Harmonogram zajęć</div>
+                    <div class="sched-list">
+                        <div class="sched-row">
+                            <span class="sched-day">Śr</span>
+                            <span class="sched-time">20:00 – 21:30</span>
+                            <span class="sched-place">Płyta główna</span>
+                        </div>
+                        <div class="sched-row">
+                            <span class="sched-day">Pt</span>
+                            <span class="sched-time">19:30 – 21:00</span>
+                            <span class="sched-place">Płyta główna</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sport-foot">
+                    <a href="#kontakt">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        Zapytaj o zapisy
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================
+     AKTUALNOŚCI
+======================================================== -->
+<section id="aktualnosci" class="section bg-dark3">
+    <div class="container">
+        <h2 class="sec-title">AKTUAL<span class="gold">NOŚCI</span></h2>
+        <p class="sec-sub">Co nowego w Hali Sportowej w Kluczach?</p>
+        <div class="sec-line"></div>
+        <div class="news-grid">
+
+            <article class="news-card fi" onclick="location.href='aktualnosci-pilates.html'" style="cursor:pointer;">
+                <div class="news-img">
+                    <img src="images/przyklad1.jpg" alt="Pilates" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+                    <span class="news-date">15 Kwień 2026</span>
+                    <span class="news-tag">Zajęcia</span>
+                </div>
+                <div class="news-body">
+                    <h3 class="news-title">Zrób coś dla siebie – dołącz do nas na Pilates!</h3>
+                    <p class="news-excerpt">Jeśli marzysz o sprawnym ciele, mocnym kręgosłupie i chwili relaksu po intensywnym dniu, nasze zajęcia z pilatesu są strzałem w dziesiątkę. Na pewno nie pożałujesz!</p>
+                    <a href="aktualnosci-pilates.html" class="news-more">Czytaj więcej →</a>
+                </div>
+            </article>
+
+            <article class="news-card fi" onclick="location.href='aktualnosci-kinderki.html'" style="cursor:pointer;">
+                <div class="news-img">
+                    <img src="images/przyklad2.jpg" alt="Kinderki Single Chłopców" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+                    <span class="news-date">29 Mar 2026</span>
+                    <span class="news-tag">Turnieje</span>
+                </div>
+                <div class="news-body">
+                    <h3 class="news-title">Kinderki – Single Chłopców! 🏐</h3>
+                    <p class="news-excerpt">Już w tę niedzielę startują rozgrywki najmłodszych siatkarzy! Przyjdźcie i zobaczcie, jak walczą o każdy punkt. Wstęp wolny!</p>
+                    <a href="aktualnosci-kinderki.html" class="news-more">Czytaj więcej →</a>
+                </div>
+            </article>
+
+            <article class="news-card fi" onclick="location.href='aktualnosci-silownia.html'" style="cursor:pointer;">
+                <div class="news-img">
+                    <img src="images/przyklad3.jpg" alt="Siłownia Klucze" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+                    <span class="news-date">10 Mar 2026</span>
+                    <span class="news-tag">Siłownia</span>
+                </div>
+                <div class="news-body">
+                    <h3 class="news-title">Klucze, czas na formę! 🏋️‍♀️</h3>
+                    <p class="news-excerpt">Zapraszamy do Siłowni i Sali Fitness w Hali Sportowej. Czynna Pn–Pt 15:30–21:30. Elastyczne ceny, wygodne płatności, świetna atmosfera!</p>
+                    <a href="aktualnosci-silownia.html" class="news-more">Czytaj więcej →</a>
+                </div>
+            </article>
+
+            <article class="news-card fi" onclick="location.href='aktualnosci-wielkanoc.html'" style="cursor:pointer;">
+                <div class="news-img">
+                    <img src="images/przyklad4.jpg" alt="Życzenia Wielkanocne" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+                    <span class="news-date">17 Kwień 2026</span>
+                    <span class="news-tag">Ogłoszenia</span>
+                </div>
+                <div class="news-body">
+                    <h3 class="news-title">Wesołych Świąt Wielkanocnych! 🐣</h3>
+                    <p class="news-excerpt">Z okazji nadchodzących Świąt życzymy niespożytej energii, doskonałego zdrowia i wielu powodów do radości. Niech ten czas przyniesie nową siłę!</p>
+                    <a href="aktualnosci-wielkanoc.html" class="news-more">Czytaj więcej →</a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================
+     SIŁOWNIA PROMO
+======================================================== -->
+<div class="silownia-strip fi">
+    <div class="container">
+        <div class="silownia-strip-inner">
+            <div class="silownia-strip-left">
+                <span class="silownia-strip-tag">W budynku hali · Poziom 0</span>
+                <h3>Siłownia <span class="gold">&amp; Sala Fitness</span></h3>
+                <p>Profesjonalny sprzęt siłowy i cardio, Pilates, treningi personalne. Otwarte Pn–Pt 15:30–21:30. Wejście od 20 zł.</p>
+            </div>
+            <a href="silownia.html" class="silownia-strip-btn">PRZEJDŹ DO SIŁOWNI →</a>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================================
+     WYNAJEM
+======================================================== -->
+<section id="wynajem" class="section bg-dark2">
+    <div class="container">
+        <h2 class="sec-title">WY<span class="gold">NAJEM</span></h2>
+        <p class="sec-sub">Wynajmij halę na trening, turniej lub imprezę sportową</p>
+        <div class="sec-line"></div>
+        <div class="wynajem-grid">
+
+            <div class="wynajem-card fi">
+                <div class="wynajem-ico">🏟️</div>
+                <div class="wynajem-name">Płyta główna hali</div>
+                <div class="wynajem-desc">Pełna płyta sportowa z szatniami – idealna na mecze, turnieje i treningi drużynowe. Możliwość rezerwacji całości lub 2/3 bądź 1/3 płyty.</div>
+                <a href="#kontakt" class="wynajem-cta">Zapytaj o cennik →</a>
+            </div>
+
+            <div class="wynajem-card fi">
+                <div class="wynajem-ico">🤸</div>
+                <div class="wynajem-name">Mała sala gimnastyczna</div>
+                <div class="wynajem-desc">Kameralna sala z szatnią – doskonała na zajęcia grupowe, jogę, akrobatykę lub treningi indywidualne.</div>
+                <a href="#kontakt" class="wynajem-cta">Zapytaj o cennik →</a>
+            </div>
+
+            <div class="wynajem-card fi">
+                <div class="wynajem-ico">📅</div>
+                <div class="wynajem-name">Imprezy weekendowe</div>
+                <div class="wynajem-desc">Sobota i niedziela – płyta główna z nagłośnieniem, tablicą wyników i szatniami. Idealne na turnieje i zawody sportowe.</div>
+                <a href="#kontakt" class="wynajem-cta">Zapytaj o cennik →</a>
+            </div>
+
+            <div class="wynajem-card fi">
+                <div class="wynajem-ico">🏢</div>
+                <div class="wynajem-name">Sala konferencyjna</div>
+                <div class="wynajem-desc">Profesjonalna sala konferencyjna do szkoleń, zebrań i spotkań sportowych. Wyposażona i klimatyzowana.</div>
+                <a href="#kontakt" class="wynajem-cta">Zapytaj o dostępność →</a>
+            </div>
+
+        </div>
+        <div class="wynajem-note fi">
+            <strong>Jak zarezerwować?</strong> Skontaktuj się z nami telefonicznie lub mailowo – ustalimy termin, zakres i szczegóły. Ceny uzależnione są od wybranej strefy, czasu trwania i dnia tygodnia. Płatność gotówką lub przelewem.
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================
+     KONTAKT
+======================================================== -->
+<section id="kontakt" class="section bg-dark3">
+    <div class="container">
+        <h2 class="sec-title">KON<span class="gold">TAKT</span></h2>
+        <p class="sec-sub">Znajdź nas – jesteśmy w centrum Klucz</p>
+        <div class="sec-line"></div>
+        <div class="kontakt-grid">
+            <div class="fi">
+                <p class="kontakt-head">Hala Sportowa w Kluczach</p>
+                <div class="kontakt-item">
+                    <div class="k-ico">📍</div>
+                    <div class="k-txt">
+                        <strong>Adres</strong>
+                        <p>ul. Zawierciańska 30<br>32-310 Klucze</p>
+                    </div>
+                </div>
+                <div class="kontakt-item">
+                    <div class="k-ico">📞</div>
+                    <div class="k-txt">
+                        <strong>Telefon – Siłownia</strong>
+                        <p><a href="tel:+48882461197">882 461 197</a></p>
+                    </div>
+                </div>
+                <div class="kontakt-item">
+                    <div class="k-ico">🕐</div>
+                    <div class="k-txt">
+                        <strong>Godziny otwarcia siłowni</strong>
+                        <p>Poniedziałek – Piątek: 15:30 – 21:30</p>
+                    </div>
+                </div>
+                <div class="kontakt-item">
+                    <div class="k-ico">🏋️</div>
+                    <div class="k-txt">
+                        <strong>Siłownia & Fitness</strong>
+                        <p><a href="silownia.html" style="color:var(--gold);">Przejdź do strony siłowni →</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-box fi">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2524.3!2d19.5618103!3d50.3409469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47166663b9c0b5df%3A0x9f8c20e4c4fef37a!2sSi%C5%82ownia%20i%20Sala%20Fitness%20w%20Kluczach!5e0!3m2!1spl!2spl!4v1714900000"
+                    width="100%" height="430"
+                    style="border:0;display:block;"
+                    allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Mapa Hala Sportowa Klucze">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================
+     FOOTER
+======================================================== -->
+<footer>
+    <div class="container">
+        <div class="footer-cols">
+            <div>
+                <div class="footer-brand">
+                    <img src="images/logo-hala.jpg" alt="Logo HSK">
+                    <div class="footer-brand-txt">
+                        <span class="ft">HALA SPORTOWA</span>
+                        <span class="fb">W KLUCZACH</span>
+                    </div>
+                </div>
+                <p class="footer-desc">Centrum aktywności sportowej dla mieszkańców gminy Klucze i okolic. Koszykówka, siatkówka, akrobatyka, piłka ręczna i siłownia pod jednym dachem.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Nawigacja</h4>
+                <ul>
+                    <li><a href="#dyscypliny">Zajęcia</a></li>
+                    <li><a href="#aktualnosci">Aktualności</a></li>
+                    <li><a href="#wynajem">Wynajem</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                    <li><a href="silownia.html">Siłownia & Fitness</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <div class="fcon"><span>📍</span><span>ul. Zawierciańska 30, 32-310 Klucze</span></div>
+                <div class="fcon"><span>📞</span><a href="tel:+48882461197">882 461 197</a></div>
+                <div class="fcon"><span>🕐</span><span>Siłownia: Pn–Pt 15:30–21:30</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bar">
+        <div class="container">© 2026 Hala Sportowa w Kluczach · ul. Zawierciańska 30, Klucze</div>
+    </div>
+</footer>
+
+<script>
+    // Navbar scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+    // Hamburger
+    const ham = document.getElementById('hamburger');
+    const mob = document.getElementById('mobMenu');
+    ham.addEventListener('click', () => {
+        ham.classList.toggle('open');
+        mob.classList.toggle('open');
+    });
+    document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => {
+        ham.classList.remove('open');
+        mob.classList.remove('open');
+    }));
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const t = document.querySelector(a.getAttribute('href'));
+            if (t) {
+                e.preventDefault();
+                const top = t.getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 16;
+                window.scrollTo({ top, behavior: 'smooth' });
+                ham.classList.remove('open');
+                mob.classList.remove('open');
+            }
+        });
+    });
+
+    // Fade-in
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+    // Active nav link
+    const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+    const sections = [...navAnchors].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const navObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                navAnchors.forEach(a => a.classList.remove('nav-active'));
+                const active = document.querySelector('.nav-links a[href="#' + e.target.id + '"]');
+                if (active) active.classList.add('nav-active');
+            }
+        });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => navObs.observe(s));
+</script>
+</body>
+</html>
