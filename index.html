@@ -596,6 +596,72 @@
         @media (max-width: 480px) {
             .hero-tagline { letter-spacing: 4px; font-size: .85rem; }
         }
+
+        /* ============================================================
+           SPORT BADGES
+        ============================================================ */
+        .sport-badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            font-size: .63rem; font-weight: 700; letter-spacing: 1.2px;
+            text-transform: uppercase; padding: 3px 9px; border-radius: 20px;
+            margin-top: 7px;
+        }
+        .sport-badge-rent {
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,255,255,.1);
+            color: #888;
+        }
+        .sport-badge-cus {
+            background: rgba(212,175,55,.1);
+            border: 1px solid rgba(212,175,55,.25);
+            color: var(--gold);
+        }
+        .sport-badge-silownia {
+            background: rgba(212,175,55,.1);
+            border: 1px solid rgba(212,175,55,.25);
+            color: var(--gold);
+        }
+
+        /* ============================================================
+           CENNIK WYNAJMU
+        ============================================================ */
+        .cennik-wrap { margin-top: 52px; }
+        .cennik-heading {
+            font-family: 'Oswald', sans-serif;
+            font-size: .72rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--muted);
+            margin-bottom: 18px;
+            display: flex; align-items: center; gap: 14px;
+        }
+        .cennik-heading::before,
+        .cennik-heading::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.07); }
+        .cennik-list { display: flex; flex-direction: column; gap: 3px; }
+        .cennik-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 20px;
+            padding: 13px 20px;
+            border-radius: 5px;
+            background: var(--dark-3);
+            border: 1px solid transparent;
+            transition: border-color .2s, background .2s;
+        }
+        .cennik-row:hover { border-color: rgba(212,175,55,.2); background: rgba(212,175,55,.04); }
+        .cennik-row.hl { background: rgba(212,175,55,.07); border-color: rgba(212,175,55,.2); }
+        .cennik-row.dim { background: rgba(255,255,255,.015); }
+        .cennik-name { font-size: .87rem; color: #ccc; line-height: 1.35; }
+        .cennik-name small { font-size: .74rem; color: var(--muted); display: block; margin-top: 2px; }
+        .cennik-price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.15rem; font-weight: 700;
+            color: var(--gold); white-space: nowrap; text-align: right;
+        }
+        .cennik-row.dim .cennik-price { font-size: .95rem; color: #777; }
+        .cennik-vat {
+            margin-top: 12px; font-size: .74rem; color: var(--muted);
+            border-top: 1px solid rgba(255,255,255,.06); padding-top: 12px;
+        }
     </style>
 </head>
 <body>
@@ -675,7 +741,6 @@
                 <div class="sport-body">
                     <div class="sport-ico">🏀</div>
                     <div class="sport-name">Koszykówka</div>
-                    <div class="sport-club">UKS Uczniowski Klub Sportowy<br>Kwaśniów Dolny</div>
                     <div class="sport-sep"></div>
                     <div class="trainer-row">
                         <span class="tr-name">Trener Damian</span>
@@ -705,6 +770,7 @@
                     <div class="sport-ico">🏐</div>
                     <div class="sport-name">Siatkówka</div>
                     <div class="sport-club">Aluron CMC Warta Zawiercie</div>
+                    <div class="sport-badge sport-badge-rent">🏢 Klub wynajmuje halę</div>
                     <div class="sport-sep"></div>
                     <div class="trainer-row">
                         <span class="tr-name">Trener Piotr</span>
@@ -748,6 +814,7 @@
                     <div class="sport-ico">🤸</div>
                     <div class="sport-name">Akrobatyka</div>
                     <div class="sport-club">Akrobatyka Klucze</div>
+                    <div class="sport-badge sport-badge-rent">🏢 Klub wynajmuje halę</div>
                     <div class="sport-sep"></div>
                     <div class="trainer-row">
                         <span class="tr-name">Trener Katarzyna</span>
@@ -782,6 +849,7 @@
                     <div class="sport-ico">🤾</div>
                     <div class="sport-name">Piłka Ręczna</div>
                     <div class="sport-club">Hala Sportowa w Kluczach</div>
+                    <div class="sport-badge sport-badge-rent">🏢 Klub wynajmuje halę</div>
                     <div class="sport-sep"></div>
                     <div class="sched-label">Harmonogram zajęć</div>
                     <div class="sched-list">
@@ -811,7 +879,8 @@
                 <div class="sport-body">
                     <div class="sport-ico">🌟</div>
                     <div class="sport-name">Gimnastyka dla dzieci</div>
-                    <div class="sport-club">Hala Sportowa w Kluczach</div>
+                    <div class="sport-club">CUS Gmina Klucze</div>
+                    <div class="sport-badge sport-badge-cus">🔗 Centrum Usług Społecznych</div>
                     <div class="sport-sep"></div>
                     <div class="sched-label">Harmonogram zajęć</div>
                     <div class="sched-list">
@@ -828,9 +897,9 @@
                     </div>
                 </div>
                 <div class="sport-foot">
-                    <a href="#kontakt">
-                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                        Zapytaj o zapisy
+                    <a href="https://cus.gmina-klucze.pl/" target="_blank" rel="noopener">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Strona CUS →
                     </a>
                 </div>
             </div>
@@ -841,7 +910,8 @@
                 <div class="sport-body">
                     <div class="sport-ico">🧘</div>
                     <div class="sport-name">Gimnastyka korekcyjna</div>
-                    <div class="sport-club">Hala Sportowa w Kluczach</div>
+                    <div class="sport-club">CUS Gmina Klucze</div>
+                    <div class="sport-badge sport-badge-cus">🔗 Centrum Usług Społecznych</div>
                     <div class="sport-sep"></div>
                     <div class="sched-label">Harmonogram zajęć</div>
                     <div class="sched-list">
@@ -858,9 +928,9 @@
                     </div>
                 </div>
                 <div class="sport-foot">
-                    <a href="#kontakt">
-                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                        Zapytaj o zapisy
+                    <a href="https://cus.gmina-klucze.pl/" target="_blank" rel="noopener">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Strona CUS →
                     </a>
                 </div>
             </div>
@@ -871,7 +941,8 @@
                 <div class="sport-body">
                     <div class="sport-ico">🧎</div>
                     <div class="sport-name">Pilates</div>
-                    <div class="sport-club">Hala Sportowa w Kluczach</div>
+                    <div class="sport-club">Siłownia &amp; Sala Fitness</div>
+                    <div class="sport-badge sport-badge-silownia">🏋️ Zajęcia w siłowni</div>
                     <div class="sport-sep"></div>
                     <div class="sched-label">Harmonogram zajęć</div>
                     <div class="sched-list">
@@ -888,9 +959,9 @@
                     </div>
                 </div>
                 <div class="sport-foot">
-                    <a href="#kontakt">
-                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                        Zapytaj o zapisy
+                    <a href="silownia.html">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Przejdź do Siłowni →
                     </a>
                 </div>
             </div>
@@ -902,6 +973,7 @@
                     <div class="sport-ico">🥋</div>
                     <div class="sport-name">Krav Maga</div>
                     <div class="sport-club">Hala Sportowa w Kluczach</div>
+                    <div class="sport-badge sport-badge-rent">🏢 Klub wynajmuje halę</div>
                     <div class="sport-sep"></div>
                     <div class="sched-label">Harmonogram zajęć</div>
                     <div class="sched-list">
@@ -1050,8 +1122,54 @@
             </div>
 
         </div>
+        <div class="cennik-wrap fi">
+            <div class="cennik-heading">Cennik wynajmu · stawka za godzinę</div>
+            <div class="cennik-list">
+                <div class="cennik-row hl">
+                    <div class="cennik-name">Płyta główna hali sportowej + szatnia</div>
+                    <div class="cennik-price">180 zł</div>
+                </div>
+                <div class="cennik-row dim">
+                    <div class="cennik-name">Płyta główna hali sportowej<small>szatnia 50%</small></div>
+                    <div class="cennik-price">90 zł</div>
+                </div>
+                <div class="cennik-row hl">
+                    <div class="cennik-name">⅔ płyty głównej hali sportowej + szatnia</div>
+                    <div class="cennik-price">140 zł</div>
+                </div>
+                <div class="cennik-row dim">
+                    <div class="cennik-name">⅔ płyty głównej hali sportowej<small>szatnia 50%</small></div>
+                    <div class="cennik-price">70 zł</div>
+                </div>
+                <div class="cennik-row hl">
+                    <div class="cennik-name">⅓ płyty głównej hali sportowej + szatnia</div>
+                    <div class="cennik-price">100 zł</div>
+                </div>
+                <div class="cennik-row dim">
+                    <div class="cennik-name">⅓ płyty głównej hali sportowej<small>szatnia 50%</small></div>
+                    <div class="cennik-price">50 zł</div>
+                </div>
+                <div class="cennik-row">
+                    <div class="cennik-name">Mała sala gimnastyczna + szatnia</div>
+                    <div class="cennik-price">60 zł</div>
+                </div>
+                <div class="cennik-row dim">
+                    <div class="cennik-name">Mała sala gimnastyczna<small>szatnia 50%</small></div>
+                    <div class="cennik-price">30 zł</div>
+                </div>
+                <div class="cennik-row">
+                    <div class="cennik-name">Dodatkowa szatnia</div>
+                    <div class="cennik-price">30 zł</div>
+                </div>
+                <div class="cennik-row hl">
+                    <div class="cennik-name">Sobota / Niedziela – płyta główna hali<small>z nagłośnieniem, tablicą wyników i szatniami</small></div>
+                    <div class="cennik-price">250 zł</div>
+                </div>
+            </div>
+            <div class="cennik-vat">VAT A – 23% &nbsp;·&nbsp; VAT B – 8% &nbsp;·&nbsp; <a href="#kontakt" style="color:var(--gold);">Zapytaj o szczegóły →</a></div>
+        </div>
         <div class="wynajem-note fi">
-            <strong>Jak zarezerwować?</strong> Skontaktuj się z nami telefonicznie lub mailowo – ustalimy termin, zakres i szczegóły. Ceny uzależnione są od wybranej strefy, czasu trwania i dnia tygodnia. Płatność gotówką lub przelewem.
+            <strong>Jak zarezerwować?</strong> Skontaktuj się z nami telefonicznie lub mailowo – ustalimy termin, zakres i szczegóły. Płatność gotówką lub przelewem.
         </div>
     </div>
 </section>
