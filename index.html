@@ -574,7 +574,7 @@
            RESPONSIVE
         ============================================================ */
         @media (max-width: 1000px) {
-            .footer-cols { grid-template-columns: 1fr 1fr; }
+            .footer-cols { grid-template-columns: 1fr 1fr !important; }
         }
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -623,6 +623,104 @@
         }
 
         /* ============================================================
+           KALENDARZ WYDARZEŃ
+        ============================================================ */
+        .events-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .event-card {
+            display: grid;
+            grid-template-columns: 90px 1fr auto;
+            align-items: center;
+            gap: 24px;
+            background: var(--dark-3);
+            border: 1px solid var(--dark-5);
+            border-left: 4px solid var(--gold);
+            border-radius: var(--r);
+            padding: 20px 24px;
+            transition: border-color var(--tr), background var(--tr), transform var(--tr);
+        }
+        .event-card:hover {
+            border-color: var(--gold);
+            background: rgba(212,175,55,.05);
+            transform: translateX(4px);
+        }
+        .event-date-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(212,175,55,.08);
+            border: 1px solid rgba(212,175,55,.2);
+            border-radius: 8px;
+            padding: 10px 8px;
+            min-width: 72px;
+        }
+        .event-day {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+        }
+        .event-month {
+            font-family: 'Oswald', sans-serif;
+            font-size: .75rem;
+            letter-spacing: 2px;
+            color: #fff;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+        .event-year {
+            font-size: .68rem;
+            color: var(--muted);
+            margin-top: 1px;
+        }
+        .event-tag {
+            display: inline-block;
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(212,175,55,.1);
+            border: 1px solid rgba(212,175,55,.25);
+            padding: 2px 9px;
+            border-radius: 20px;
+            margin-bottom: 7px;
+        }
+        .event-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .event-meta {
+            font-size: .8rem;
+            color: var(--muted);
+        }
+        .event-arrow {
+            font-size: 1.3rem;
+            color: rgba(212,175,55,.4);
+            transition: color var(--tr), transform var(--tr);
+        }
+        .event-card:hover .event-arrow {
+            color: var(--gold);
+            transform: translateX(4px);
+        }
+        @media (max-width: 600px) {
+            .event-card {
+                grid-template-columns: 72px 1fr;
+                gap: 16px;
+            }
+            .event-arrow { display: none; }
+        }
+
+        /* ============================================================
            CENNIK WYNAJMU
         ============================================================ */
         .cennik-wrap { margin-top: 52px; }
@@ -662,6 +760,30 @@
             margin-top: 12px; font-size: .74rem; color: var(--muted);
             border-top: 1px solid rgba(255,255,255,.06); padding-top: 12px;
         }
+
+        /* Cennik – warianty kolorów */
+        .cennik-row.c-gold  { background: rgba(212,175,55,.08); border-color: rgba(212,175,55,.25); }
+        .cennik-row.c-gold  .cennik-price { color: var(--gold); }
+        .cennik-row.c-blue  { background: rgba(0,150,199,.07); border-color: rgba(0,150,199,.22); }
+        .cennik-row.c-blue  .cennik-price { color: #4dc8f0; }
+        .cennik-row.c-green { background: rgba(16,185,129,.07); border-color: rgba(16,185,129,.22); }
+        .cennik-row.c-green .cennik-price { color: #34d399; }
+        .cennik-row.c-purple{ background: rgba(155,93,229,.07); border-color: rgba(155,93,229,.22); }
+        .cennik-row.c-purple .cennik-price{ color: #c084fc; }
+        .cennik-row.c-dim   { background: rgba(255,255,255,.02); }
+        .cennik-row.c-dim   .cennik-price { color: #888; font-size:.95rem; }
+
+        /* Responsywność – cennik + sports-grid + news-grid */
+        @media (max-width: 1100px) {
+            .sports-grid[style*="repeat(4"] { grid-template-columns: repeat(2,1fr) !important; }
+        }
+        @media (max-width: 700px) {
+            .sports-grid[style*="repeat(4"] { grid-template-columns: 1fr !important; }
+            .sports-grid[style*="repeat(3"] { grid-template-columns: 1fr !important; }
+            .wynajem-grid { grid-template-columns: 1fr !important; }
+            .cennik-row { grid-template-columns: 1fr; gap: 6px; }
+            .cennik-price { text-align: left !important; font-size: 1rem !important; }
+        }
     </style>
 </head>
 <body>
@@ -679,8 +801,10 @@
             </div>
         </a>
         <ul class="nav-links">
-            <li><a href="#dyscypliny">Zajęcia</a></li>
             <li><a href="#aktualnosci">Aktualności</a></li>
+            <li><a href="#dyscypliny">Zajęcia</a></li>
+            <li><a href="#cus">CUS</a></li>
+            <li><a href="#kalendarz">Kalendarz</a></li>
             <li><a href="#wynajem">Wynajem</a></li>
             <li><a href="#kontakt">Kontakt</a></li>
             <li><a href="silownia.html" class="cta">🏋️ SIŁOWNIA</a></li>
@@ -690,8 +814,10 @@
         </button>
     </div>
     <div class="mob-menu" id="mobMenu">
-        <a href="#dyscypliny" class="mob-link">Zajęcia</a>
         <a href="#aktualnosci" class="mob-link">Aktualności</a>
+        <a href="#dyscypliny" class="mob-link">Zajęcia</a>
+        <a href="#cus" class="mob-link">CUS</a>
+        <a href="#kalendarz" class="mob-link">Kalendarz</a>
         <a href="#wynajem" class="mob-link">Wynajem</a>
         <a href="#kontakt" class="mob-link">Kontakt</a>
         <a href="silownia.html">🏋️ Siłownia & Fitness</a>
@@ -726,6 +852,72 @@
 </section>
 
 <!-- ========================================================
+     AKTUALNOŚCI  (przeniesione na górę)
+======================================================== -->
+<section id="aktualnosci" class="section bg-dark3">
+    <div class="container">
+        <h2 class="sec-title">AKTUAL<span class="gold">NOŚCI</span></h2>
+        <p class="sec-sub">Co nowego w Hali Sportowej w Kluczach?</p>
+        <div class="sec-line"></div>
+        <div class="news-grid">
+
+            <article class="news-card fi" onclick="location.href='aktualnosci-pilates.html'" style="cursor:pointer;">
+                <div class="news-img">
+                    <img src="images/przyklad1.jpg" alt="Pilates" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+                    <span class="news-date">15 Kwień 2026</span>
+                    <span class="news-tag">Zajęcia</span>
+                </div>
+                <div class="news-body">
+                    <h3 class="news-title">Zrób coś dla siebie – dołącz do nas na Pilates!</h3>
+                    <p class="news-excerpt">Jeśli marzysz o sprawnym ciele, mocnym kręgosłupie i chwili relaksu po intensywnym dniu, nasze zajęcia z pilatesu są strzałem w dziesiątkę. Na pewno nie pożałujesz!</p>
+                    <a href="aktualnosci-pilates.html" class="news-more">Czytaj więcej →</a>
+                </div>
+            </article>
+
+            <article class="news-card fi" onclick="location.href='aktualnosci-kinderki.html'" style="cursor:pointer;">
+                <div class="news-img">
+                    <img src="images/przyklad2.jpg" alt="Kinderki Single Chłopców" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+                    <span class="news-date">29 Mar 2026</span>
+                    <span class="news-tag">Turnieje</span>
+                </div>
+                <div class="news-body">
+                    <h3 class="news-title">Kinderki – Single Chłopców! 🏐</h3>
+                    <p class="news-excerpt">Już w tę niedzielę startują rozgrywki najmłodszych siatkarzy! Przyjdźcie i zobaczcie, jak walczą o każdy punkt. Wstęp wolny!</p>
+                    <a href="aktualnosci-kinderki.html" class="news-more">Czytaj więcej →</a>
+                </div>
+            </article>
+
+            <article class="news-card fi" onclick="location.href='aktualnosci-silownia.html'" style="cursor:pointer;">
+                <div class="news-img">
+                    <img src="images/przyklad3.jpg" alt="Siłownia Klucze" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+                    <span class="news-date">10 Mar 2026</span>
+                    <span class="news-tag">Siłownia</span>
+                </div>
+                <div class="news-body">
+                    <h3 class="news-title">Klucze, czas na formę! 🏋️‍♀️</h3>
+                    <p class="news-excerpt">Zapraszamy do Siłowni i Sali Fitness w Hali Sportowej. Czynna Pn–Pt 15:30–21:30. Elastyczne ceny, wygodne płatności, świetna atmosfera!</p>
+                    <a href="aktualnosci-silownia.html" class="news-more">Czytaj więcej →</a>
+                </div>
+            </article>
+
+            <article class="news-card fi" onclick="location.href='aktualnosci-wielkanoc.html'" style="cursor:pointer;">
+                <div class="news-img">
+                    <img src="images/przyklad4.jpg" alt="Życzenia Wielkanocne" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+                    <span class="news-date">17 Kwień 2026</span>
+                    <span class="news-tag">Ogłoszenia</span>
+                </div>
+                <div class="news-body">
+                    <h3 class="news-title">Wesołych Świąt Wielkanocnych! 🐣</h3>
+                    <p class="news-excerpt">Z okazji nadchodzących Świąt życzymy niespożytej energii, doskonałego zdrowia i wielu powodów do radości. Niech ten czas przyniesie nową siłę!</p>
+                    <a href="aktualnosci-wielkanoc.html" class="news-more">Czytaj więcej →</a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================
      ZAJĘCIA
 ======================================================== -->
 <section id="dyscypliny" class="section bg-dark2">
@@ -733,7 +925,7 @@
         <h2 class="sec-title">NA<span class="gold">SZE ZAJĘCIA</span></h2>
         <p class="sec-sub">Siatkówka, akrobatyka, piłka ręczna, Krav Maga, gimnastyka – dla dzieci, młodzieży i dorosłych</p>
         <div class="sec-line"></div>
-        <div class="sports-grid">
+        <div class="sports-grid" style="grid-template-columns: repeat(4,1fr);">
 
             <!-- Siatkówka -->
             <div class="sport-card fi">
@@ -820,6 +1012,10 @@
                     <div class="sport-name">Piłka Ręczna</div>
                     <div class="sport-club">Hala Sportowa w Kluczach</div>
                     <div class="sport-sep"></div>
+                    <div class="trainer-row">
+                        <span class="tr-name">Trener Grzegorz</span>
+                        <a href="tel:602583025" class="tr-phone">602 583 025</a>
+                    </div>
                     <div class="sched-label">Harmonogram zajęć</div>
                     <div class="sched-list">
                         <div class="sched-row">
@@ -835,71 +1031,9 @@
                     </div>
                 </div>
                 <div class="sport-foot">
-                    <a href="#kontakt">
-                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                        Zapytaj o zapisy
-                    </a>
-                </div>
-            </div>
-
-            <!-- Gimnastyka dla dzieci -->
-            <div class="sport-card fi">
-                <div class="sport-bar" style="background:#facc15;"></div>
-                <div class="sport-body">
-                    <div class="sport-ico">🌟</div>
-                    <div class="sport-name">Gimnastyka dla dzieci</div>
-                    <div class="sport-club">CUS Gmina Klucze</div>
-                    <div class="sport-badge sport-badge-cus">🔗 Centrum Usług Społecznych</div>
-                    <div class="sport-sep"></div>
-                    <div class="sched-label">Harmonogram zajęć</div>
-                    <div class="sched-list">
-                        <div class="sched-row">
-                            <span class="sched-day">Śr</span>
-                            <span class="sched-time">17:30 – 18:15</span>
-                            <span class="sched-place">Płyta · gr. I</span>
-                        </div>
-                        <div class="sched-row">
-                            <span class="sched-day">Śr</span>
-                            <span class="sched-time">18:30 – 19:15</span>
-                            <span class="sched-place">Płyta · gr. II</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="sport-foot">
-                    <a href="https://cus.gmina-klucze.pl/" target="_blank" rel="noopener">
-                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        Strona CUS →
-                    </a>
-                </div>
-            </div>
-
-            <!-- Gimnastyka Korekcyjna -->
-            <div class="sport-card fi">
-                <div class="sport-bar" style="background:#ec4899;"></div>
-                <div class="sport-body">
-                    <div class="sport-ico">🧘</div>
-                    <div class="sport-name">Gimnastyka korekcyjna</div>
-                    <div class="sport-club">CUS Gmina Klucze</div>
-                    <div class="sport-badge sport-badge-cus">🔗 Centrum Usług Społecznych</div>
-                    <div class="sport-sep"></div>
-                    <div class="sched-label">Harmonogram zajęć</div>
-                    <div class="sched-list">
-                        <div class="sched-row">
-                            <span class="sched-day">Wt</span>
-                            <span class="sched-time">18:00 – 19:00</span>
-                            <span class="sched-place">Sala fitness · dorośli</span>
-                        </div>
-                        <div class="sched-row">
-                            <span class="sched-day">Śr</span>
-                            <span class="sched-time">18:00 – 19:00</span>
-                            <span class="sched-place">Mała sala</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="sport-foot">
-                    <a href="https://cus.gmina-klucze.pl/" target="_blank" rel="noopener">
-                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        Strona CUS →
+                    <a href="tel:602583025">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Zadzwoń do trenera
                     </a>
                 </div>
             </div>
@@ -912,24 +1046,23 @@
                     <div class="sport-name">Krav Maga</div>
                     <div class="sport-club">Hala Sportowa w Kluczach</div>
                     <div class="sport-sep"></div>
+                    <div class="trainer-row">
+                        <span class="tr-name">Trener Artur</span>
+                        <a href="tel:698886487" class="tr-phone">698 886 487</a>
+                    </div>
                     <div class="sched-label">Harmonogram zajęć</div>
                     <div class="sched-list">
                         <div class="sched-row">
-                            <span class="sched-day">Śr</span>
-                            <span class="sched-time">20:00 – 21:30</span>
-                            <span class="sched-place">Płyta główna</span>
-                        </div>
-                        <div class="sched-row">
                             <span class="sched-day">Pt</span>
-                            <span class="sched-time">19:30 – 21:00</span>
+                            <span class="sched-time">18:00 – 19:30</span>
                             <span class="sched-place">Płyta główna</span>
                         </div>
                     </div>
                 </div>
                 <div class="sport-foot">
-                    <a href="#kontakt">
-                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                        Zapytaj o zapisy
+                    <a href="tel:698886487">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Zadzwoń do trenera
                     </a>
                 </div>
             </div>
@@ -939,67 +1072,136 @@
 </section>
 
 <!-- ========================================================
-     AKTUALNOŚCI
+     CUS
 ======================================================== -->
-<section id="aktualnosci" class="section bg-dark3">
+<section id="cus" class="section bg-dark3">
     <div class="container">
-        <h2 class="sec-title">AKTUAL<span class="gold">NOŚCI</span></h2>
-        <p class="sec-sub">Co nowego w Hali Sportowej w Kluczach?</p>
+        <h2 class="sec-title"><span class="gold">CUS</span></h2>
+        <p class="sec-sub">Centrum Usług Sportowych – zajęcia dla dzieci, młodzieży i dorosłych</p>
         <div class="sec-line"></div>
-        <div class="news-grid">
 
-            <article class="news-card fi" onclick="location.href='aktualnosci-pilates.html'" style="cursor:pointer;">
-                <div class="news-img">
-                    <img src="images/przyklad1.jpg" alt="Pilates" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-                    <span class="news-date">15 Kwień 2026</span>
-                    <span class="news-tag">Zajęcia</span>
-                </div>
-                <div class="news-body">
-                    <h3 class="news-title">Zrób coś dla siebie – dołącz do nas na Pilates!</h3>
-                    <p class="news-excerpt">Jeśli marzysz o sprawnym ciele, mocnym kręgosłupie i chwili relaksu po intensywnym dniu, nasze zajęcia z pilatesu są strzałem w dziesiątkę. Na pewno nie pożałujesz!</p>
-                    <a href="aktualnosci-pilates.html" class="news-more">Czytaj więcej →</a>
-                </div>
-            </article>
+        <div class="wynajem-note fi" style="margin-bottom:36px;">
+            <strong>Zapisy i informacje:</strong> Dzwoń od poniedziałku do piątku, w godzinach 7:00–14:00 &nbsp;·&nbsp;
+            <a href="tel:518492560" style="color:var(--gold);">518 492 560</a> &nbsp;/&nbsp;
+            <a href="tel:518492512" style="color:var(--gold);">518 492 512</a>
+        </div>
 
-            <article class="news-card fi" onclick="location.href='aktualnosci-kinderki.html'" style="cursor:pointer;">
-                <div class="news-img">
-                    <img src="images/przyklad2.jpg" alt="Kinderki Single Chłopców" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-                    <span class="news-date">29 Mar 2026</span>
-                    <span class="news-tag">Turnieje</span>
-                </div>
-                <div class="news-body">
-                    <h3 class="news-title">Kinderki – Single Chłopców! 🏐</h3>
-                    <p class="news-excerpt">Już w tę niedzielę startują rozgrywki najmłodszych siatkarzy! Przyjdźcie i zobaczcie, jak walczą o każdy punkt. Wstęp wolny!</p>
-                    <a href="aktualnosci-kinderki.html" class="news-more">Czytaj więcej →</a>
-                </div>
-            </article>
+        <div class="sports-grid" style="grid-template-columns: repeat(3,1fr);">
 
-            <article class="news-card fi" onclick="location.href='aktualnosci-silownia.html'" style="cursor:pointer;">
-                <div class="news-img">
-                    <img src="images/przyklad3.jpg" alt="Siłownia Klucze" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-                    <span class="news-date">10 Mar 2026</span>
-                    <span class="news-tag">Siłownia</span>
+            <!-- Gimnastyka korekcyjna dla dzieci -->
+            <div class="sport-card fi">
+                <div class="sport-bar" style="background:#ec4899;"></div>
+                <div class="sport-body">
+                    <div class="sport-ico">🧘</div>
+                    <div class="sport-name">Gimnastyka korekcyjna</div>
+                    <div class="sport-club">Dla dzieci · CUS</div>
+                    <div class="sport-sep"></div>
+                    <div class="sched-label">Harmonogram zajęć</div>
+                    <div class="sched-list">
+                        <div class="sched-row">
+                            <span class="sched-day">Wt</span>
+                            <span class="sched-time">18:30 – 19:15</span>
+                            <span class="sched-place">Mała sala</span>
+                        </div>
+                    </div>
+                    <span class="sport-badge sport-badge-cus" style="margin-top:14px;">CUS</span>
                 </div>
-                <div class="news-body">
-                    <h3 class="news-title">Klucze, czas na formę! 🏋️‍♀️</h3>
-                    <p class="news-excerpt">Zapraszamy do Siłowni i Sali Fitness w Hali Sportowej. Czynna Pn–Pt 15:30–21:30. Elastyczne ceny, wygodne płatności, świetna atmosfera!</p>
-                    <a href="aktualnosci-silownia.html" class="news-more">Czytaj więcej →</a>
+                <div class="sport-foot">
+                    <a href="https://cus.gmina-klucze.pl/" target="_blank" rel="noopener">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Strona CUS
+                    </a>
                 </div>
-            </article>
+            </div>
 
-            <article class="news-card fi" onclick="location.href='aktualnosci-wielkanoc.html'" style="cursor:pointer;">
-                <div class="news-img">
-                    <img src="images/przyklad4.jpg" alt="Życzenia Wielkanocne" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-                    <span class="news-date">17 Kwień 2026</span>
-                    <span class="news-tag">Ogłoszenia</span>
+            <!-- Rehabilitacja ogólnousprawniająca -->
+            <div class="sport-card fi">
+                <div class="sport-bar" style="background:#06b6d4;"></div>
+                <div class="sport-body">
+                    <div class="sport-ico">🏥</div>
+                    <div class="sport-name">Rehabilitacja ogólnousprawniająca</div>
+                    <div class="sport-club">CUS</div>
+                    <div class="sport-sep"></div>
+                    <div class="sched-label">Harmonogram zajęć</div>
+                    <div class="sched-list">
+                        <div class="sched-row">
+                            <span class="sched-day">Śr</span>
+                            <span class="sched-time">18:00 – 19:00</span>
+                            <span class="sched-place">Płyta</span>
+                        </div>
+                    </div>
+                    <span class="sport-badge sport-badge-cus" style="margin-top:14px;">CUS · Płyta</span>
                 </div>
-                <div class="news-body">
-                    <h3 class="news-title">Wesołych Świąt Wielkanocnych! 🐣</h3>
-                    <p class="news-excerpt">Z okazji nadchodzących Świąt życzymy niespożytej energii, doskonałego zdrowia i wielu powodów do radości. Niech ten czas przyniesie nową siłę!</p>
-                    <a href="aktualnosci-wielkanoc.html" class="news-more">Czytaj więcej →</a>
+                <div class="sport-foot">
+                    <a href="https://cus.gmina-klucze.pl/" target="_blank" rel="noopener">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Strona CUS
+                    </a>
                 </div>
-            </article>
+            </div>
 
+            <!-- Warsztaty Bezpieczna Kobieta -->
+            <div class="sport-card fi">
+                <div class="sport-bar" style="background:#f59e0b;"></div>
+                <div class="sport-body">
+                    <div class="sport-ico">👩‍🦺</div>
+                    <div class="sport-name">Warsztaty "Bezpieczna Kobieta"</div>
+                    <div class="sport-club">CUS</div>
+                    <div class="sport-sep"></div>
+                    <div class="sched-label">Harmonogram zajęć</div>
+                    <div class="sched-list">
+                        <div class="sched-row">
+                            <span class="sched-day">Śr</span>
+                            <span class="sched-time">18:00 – 20:00</span>
+                            <span class="sched-place">Płyta</span>
+                        </div>
+                    </div>
+                    <span class="sport-badge sport-badge-cus" style="margin-top:14px;">CUS · Płyta</span>
+                </div>
+                <div class="sport-foot">
+                    <a href="https://cus.gmina-klucze.pl/" target="_blank" rel="noopener">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Strona CUS
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================
+     KALENDARZ WYDARZEŃ
+======================================================== -->
+<section id="kalendarz" class="section bg-dark2">
+    <div class="container">
+        <h2 class="sec-title">KALENDARZ <span class="gold">WYDARZEŃ</span></h2>
+        <p class="sec-sub">Nadchodzące zawody i turnieje sportowe w Hali Sportowej w Kluczach</p>
+        <div class="sec-line"></div>
+
+        <div class="events-grid fi">
+
+            <!-- ===== WYDARZENIE – kopiuj ten blok, aby dodać nowe ===== -->
+            <div class="event-card">
+                <div class="event-date-col">
+                    <span class="event-day">13</span>
+                    <span class="event-month">CZE</span>
+                    <span class="event-year">2026</span>
+                </div>
+                <div class="event-body">
+                    <span class="event-tag">Zawody</span>
+                    <h3 class="event-title">Zawody zapaśnicze</h3>
+                    <p class="event-meta">🏟️ Płyta główna &nbsp;·&nbsp; 🕙 10:00</p>
+                </div>
+                <div class="event-arrow">→</div>
+            </div>
+            <!-- ===== KONIEC BLOKU WYDARZENIA ===== -->
+
+        </div>
+
+        <div class="wynajem-note fi" style="margin-top:36px;">
+            <strong>Chcesz zorganizować zawody lub turniej?</strong> Skontaktuj się z nami – pomożemy zaplanować imprezę sportową. <a href="#kontakt" style="color:var(--gold);">Kontakt →</a>
         </div>
     </div>
 </section>
@@ -1062,48 +1264,31 @@
         <div class="cennik-wrap fi">
             <div class="cennik-heading">Cennik wynajmu · stawka za godzinę</div>
             <div class="cennik-list">
-                <div class="cennik-row hl">
-                    <div class="cennik-name">Płyta główna hali sportowej + szatnia</div>
+                <div class="cennik-row c-gold">
+                    <div class="cennik-name">🏟️ Płyta główna hali sportowej + szatnia</div>
                     <div class="cennik-price">180 zł</div>
                 </div>
-                <div class="cennik-row dim">
-                    <div class="cennik-name">Płyta główna hali sportowej<small>szatnia 50%</small></div>
-                    <div class="cennik-price">90 zł</div>
-                </div>
-                <div class="cennik-row hl">
+                <div class="cennik-row c-blue">
                     <div class="cennik-name">⅔ płyty głównej hali sportowej + szatnia</div>
                     <div class="cennik-price">140 zł</div>
                 </div>
-                <div class="cennik-row dim">
-                    <div class="cennik-name">⅔ płyty głównej hali sportowej<small>szatnia 50%</small></div>
-                    <div class="cennik-price">70 zł</div>
-                </div>
-                <div class="cennik-row hl">
+                <div class="cennik-row c-blue">
                     <div class="cennik-name">⅓ płyty głównej hali sportowej + szatnia</div>
                     <div class="cennik-price">100 zł</div>
                 </div>
-                <div class="cennik-row dim">
-                    <div class="cennik-name">⅓ płyty głównej hali sportowej<small>szatnia 50%</small></div>
-                    <div class="cennik-price">50 zł</div>
-                </div>
-                <div class="cennik-row">
-                    <div class="cennik-name">Mała sala gimnastyczna + szatnia</div>
+                <div class="cennik-row c-green">
+                    <div class="cennik-name">🤸 Mała sala gimnastyczna + szatnia</div>
                     <div class="cennik-price">60 zł</div>
                 </div>
-                <div class="cennik-row dim">
-                    <div class="cennik-name">Mała sala gimnastyczna<small>szatnia 50%</small></div>
-                    <div class="cennik-price">30 zł</div>
-                </div>
-                <div class="cennik-row">
+                <div class="cennik-row c-dim">
                     <div class="cennik-name">Dodatkowa szatnia</div>
                     <div class="cennik-price">30 zł</div>
                 </div>
-                <div class="cennik-row hl">
-                    <div class="cennik-name">Sobota / Niedziela – płyta główna hali<small>z nagłośnieniem, tablicą wyników i szatniami</small></div>
+                <div class="cennik-row c-purple">
+                    <div class="cennik-name">🔑 Wynajem hali na wyłączność<small>Sobota / Niedziela – płyta główna z nagłośnieniem, tablicą wyników i szatniami</small></div>
                     <div class="cennik-price">250 zł</div>
                 </div>
             </div>
-            <div class="cennik-vat">VAT A – 23% &nbsp;·&nbsp; VAT B – 8% &nbsp;·&nbsp; <a href="#kontakt" style="color:var(--gold);">Zapytaj o szczegóły →</a></div>
         </div>
         <div class="wynajem-note fi">
             <strong>Jak zarezerwować?</strong> Skontaktuj się z nami telefonicznie lub mailowo – ustalimy termin, zakres i szczegóły. Płatność gotówką lub przelewem.
@@ -1126,7 +1311,7 @@
                     <div class="k-ico">📍</div>
                     <div class="k-txt">
                         <strong>Adres</strong>
-                        <p>ul. Zawierciańska 30<br>32-310 Klucze</p>
+                        <p><a href="https://maps.app.goo.gl/2UWU45wEn8PcFGKa8" target="_blank" rel="noopener">ul. Zawierciańska 30<br>32-310 Klucze</a></p>
                     </div>
                 </div>
                 <div class="kontakt-item">
@@ -1153,7 +1338,7 @@
             </div>
             <div class="map-box fi">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2524.3!2d19.5618103!3d50.3409469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47166663b9c0b5df%3A0x9f8c20e4c4fef37a!2sSi%C5%82ownia%20i%20Sala%20Fitness%20w%20Kluczach!5e0!3m2!1spl!2spl!4v1714900000"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000!2d19.5644034!3d50.3409941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4716e308d836fb75%3A0xd58f2c568a74586c!2sHala%20Sportowa%20w%20Kluczach!5e1!3m2!1spl!2spl!4v1746000000"
                     width="100%" height="430"
                     style="border:0;display:block;"
                     allowfullscreen="" loading="lazy"
@@ -1170,7 +1355,7 @@
 ======================================================== -->
 <footer>
     <div class="container">
-        <div class="footer-cols">
+        <div class="footer-cols" style="grid-template-columns: 1.6fr 1fr 1fr;">
             <div>
                 <div class="footer-brand">
                     <img src="images/logo.png" alt="Logo HSK">
@@ -1179,16 +1364,18 @@
                         <span class="fb">W KLUCZACH</span>
                     </div>
                 </div>
-                <p class="footer-desc">Centrum aktywności sportowej dla mieszkańców gminy Klucze i okolic. Koszykówka, siatkówka, akrobatyka, piłka ręczna i siłownia pod jednym dachem.</p>
+                <p class="footer-desc">Centrum aktywności sportowej dla mieszkańców gminy Klucze i okolic. Siatkówka, akrobatyka, piłka ręczna, Krav Maga, gimnastyka, siłownia i CUS pod jednym dachem.</p>
             </div>
             <div class="footer-col">
                 <h4>Nawigacja</h4>
                 <ul>
-                    <li><a href="#dyscypliny">Zajęcia</a></li>
                     <li><a href="#aktualnosci">Aktualności</a></li>
+                    <li><a href="#dyscypliny">Zajęcia</a></li>
+                    <li><a href="#cus">CUS</a></li>
+                    <li><a href="#kalendarz">Kalendarz wydarzeń</a></li>
                     <li><a href="#wynajem">Wynajem</a></li>
                     <li><a href="#kontakt">Kontakt</a></li>
-                    <li><a href="silownia.html">Siłownia & Fitness</a></li>
+                    <li><a href="silownia.html">Siłownia &amp; Fitness</a></li>
                 </ul>
             </div>
             <div class="footer-col">
